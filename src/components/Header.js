@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import mainMobileImg from "./phone.png";
 import mainPcImg from "../images/pc.png";
 
-const Header = ({ history, goTo }) => {
+const Header = ({ className, goTo }) => {
+  /**
   const [showSidebar, setShowSidebar] = useState(false);
 
   const sideBarItems = [
@@ -30,9 +31,10 @@ const Header = ({ history, goTo }) => {
       },
     },
   ];
+   */
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${className ? className : ""}`}>
       <div className="content">
         <div className="title">
           <div className="title-content">
@@ -46,6 +48,8 @@ const Header = ({ history, goTo }) => {
             onKeyDown={() => goTo("info")}
             onClick={() => goTo("info")}
             className="option"
+            role="button"
+            tabIndex={0}
           >
             Información
           </span>
@@ -53,6 +57,8 @@ const Header = ({ history, goTo }) => {
             onKeyDown={() => goTo("prices")}
             onClick={() => goTo("prices")}
             className="option"
+            role="button"
+            tabIndex={0}
           >
             Precios
           </span>
@@ -73,6 +79,8 @@ const Header = ({ history, goTo }) => {
               className="btn btn-white"
               onClick={() => goTo("info")}
               onKeyDown={() => goTo("info")}
+              role="button"
+              tabIndex={0}
             >
               Información
             </span>
@@ -80,6 +88,8 @@ const Header = ({ history, goTo }) => {
               className="btn btn-white"
               onClick={() => goTo("contact")}
               onKeyDown={() => goTo("contact")}
+              role="button"
+              tabIndex={0}
             >
               Contáctanos
             </span>

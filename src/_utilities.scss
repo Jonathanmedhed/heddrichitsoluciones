@@ -1,4 +1,4 @@
-@import 'config';
+@import "config";
 
 /** Backgrounds */
 .bg {
@@ -601,7 +601,7 @@
 
 /** Hide or Show Elements */
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .hide-sm {

@@ -9,6 +9,11 @@ import Header from "./Header";
 
 import featureImg from "./mobile-hand-bg.jpg";
 import modifyContentImg from "./content.png";
+import loadingImg from "../images/loading.svg";
+import frameHandImg from "../images/mobile-hand.png";
+import gif from "../images/gif.gif";
+import userImg from "../images/user-office.jpg";
+/**
 import cartImg from "./screens/cart.jpg";
 import contactImg from "./screens/contact-us.jpg";
 import graphSalesImg from "./screens/graph-sales.jpg";
@@ -19,11 +24,10 @@ import orderImg from "./screens/order.jpg";
 import ordersImg from "./screens/orders.jpg";
 import productImg from "./screens/product.jpg";
 import productsImg from "./screens/products.jpg";
+ */
 //import frameNoPadImg from "./screens/frame-no-padding.png";
-import frameHandImg from "../images/mobile-hand.png";
-import gif from "../images/gif.gif";
-import userImg from "../images/user-office.jpg";
 
+/**
 const images = [
   {
     img: cartImg,
@@ -76,12 +80,14 @@ const images = [
     text: "Muestra un listado de los productos, con descuentos aplicados, ademas de otras ofertas disponibles.",
   },
 ];
+ */
 
 const Landing = () => {
   //const dispatch = useDispatch()
 
   const [alert, setAlert] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
   //const sendEmail = useSelector((state) => state.sendEmail)
   //const { loading, error, success } = sendEmail
@@ -120,7 +126,7 @@ const Landing = () => {
     setSuccess(false);
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  /**
   const itemTemplate = (item) => (
     <div className="carousel-product-info">
       <img
@@ -136,6 +142,7 @@ const Landing = () => {
       </div>
     </div>
   );
+ */
 
   const sendEmailHandler = () => {
     setAlert(null);
@@ -169,8 +176,13 @@ const Landing = () => {
 
   return (
     <>
-      <Header goTo={goTo} />
-      <div className="body">
+      <img
+        alt="cargando..."
+        className={`loader ${!isImgLoaded ? "" : "hide"}`}
+        src={loadingImg}
+      />
+      <Header className={`body ${isImgLoaded ? "" : "hide"}`} goTo={goTo} />
+      <div className={`body ${isImgLoaded ? "" : "hide"}`}>
         <section className="text-img-section">
           <img src={userImg} alt={"user-img"}></img>
           <div className="right">
@@ -279,7 +291,7 @@ const Landing = () => {
                   pagina principal.
                 </p>
                 <p>
-                  <i class="fas fa-ellipsis-h"></i> Y mucho más...
+                  <i className="fas fa-ellipsis-h"></i> Y mucho más...
                 </p>
               </div>
             </div>
@@ -336,15 +348,16 @@ const Landing = () => {
                 </p>
                 <div className="list">
                   <p className="item">
-                    <i class="fas fa-check-circle"></i> Todas las funciones
+                    <i className="fas fa-check-circle"></i> Todas las funciones
                     mostradas
                   </p>
                   <p className="item">
-                    <i class="fas fa-check-circle"></i> Sin modificaciones
+                    <i className="fas fa-check-circle"></i> Sin modificaciones
                     extras
                   </p>
                   <p className="item">
-                    <i class="fas fa-check-circle"></i> Vistas para PC y Móvil
+                    <i className="fas fa-check-circle"></i> Vistas para PC y
+                    Móvil
                   </p>
                 </div>
                 <button
@@ -369,22 +382,23 @@ const Landing = () => {
                   </p>
                   <div className="list">
                     <p className="item">
-                      <i class="fas fa-check-circle"></i> Colores y estilo
+                      <i className="fas fa-check-circle"></i> Colores y estilo
                       ligados a tu marca
                     </p>
                     <p className="item">
-                      <i class="fas fa-check-circle"></i> Funciones y secciones
-                      extras
+                      <i className="fas fa-check-circle"></i> Funciones y
+                      secciones extras
                     </p>
                     <p className="item">
-                      <i class="fas fa-check-circle"></i> Vistas para PC y Móvil
+                      <i className="fas fa-check-circle"></i> Vistas para PC y
+                      Móvil
                     </p>
                     <p className="item">
-                      <i class="fas fa-check-circle"></i> y más...
+                      <i className="fas fa-check-circle"></i> y más...
                     </p>
                     <p className="item">
-                      <i class="fas fa-check-circle"></i> Precio depende de los
-                      cambios requeridos
+                      <i className="fas fa-check-circle"></i> Precio depende de
+                      los cambios requeridos
                     </p>
                   </div>
                   <button
@@ -414,7 +428,11 @@ const Landing = () => {
           <div className="right-content">
             <div className="inside">
               <img src={frameHandImg} alt="phone-header"></img>
-              <img src={gif} alt="phone-gif"></img>
+              <img
+                alt="phone-gif"
+                onLoad={() => setIsImgLoaded(true)}
+                src={gif}
+              ></img>
             </div>
           </div>
         </section>
@@ -462,6 +480,8 @@ const Landing = () => {
                 className="btn btn-primary mt-1"
                 onClick={() => sendEmailHandler()}
                 onKeyDown={() => sendEmailHandler()}
+                role="button"
+                tabIndex={0}
               >
                 Enviar
               </div>
@@ -476,7 +496,7 @@ const Landing = () => {
           </>
         </section>
       </div>
-      <Footer />
+      <Footer className={`body ${isImgLoaded ? "" : "hide"}`} />
     </>
   );
 };

@@ -2274,7 +2274,7 @@ p {
 *****************************************************************************************************/
 /** Hide or Show Elements */
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .hide-sm {
@@ -4046,29 +4046,12 @@ footer .bottom a:hover {
 /*****************************************************************************************************
   * Spinner
   *****************************************************************************************************/
-.p-progress-spinner {
-  justify-self: center;
-  align-self: center;
-}
-
-.fixed-loader {
-  margin: 10rem 0;
-  display: flex;
-  flex-direction: column;
-}
-.fixed-loader .message {
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
 .loader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.loader .message {
-  font-size: 0.8rem;
-  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10rem;
 }
 
 /*****************************************************************************************************
@@ -4200,6 +4183,7 @@ footer .bottom a:hover {
      object-fit: cover;
 }
 .navbar .bottom {
+  width: 100%;
   background-color: rgb(255, 255, 255);
   color: rgb(151, 151, 151);
   padding: 1rem 0 1rem 5rem;
